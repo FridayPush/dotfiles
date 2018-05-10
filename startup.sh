@@ -77,3 +77,5 @@ git config --global user.email simpson.jon@gmail.com
 git config --global push.default simple;
 git config --global core.editor vim
 
+# Install shell startup scripts
+cd ~ && mkdir .shellrc && cd .shellrc && export https://github.com/simpsonjon/dotfiles/trunk/shellrc/bashrc.d/
