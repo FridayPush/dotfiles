@@ -79,3 +79,4 @@ git config --global core.editor vim
 
 # Install shell startup scripts
 cd ~ && mkdir .shellrc && cd .shellrc && export https://github.com/simpsonjon/dotfiles/trunk/shellrc/bashrc.d/
+mv bashrc ~/.bashrc 
