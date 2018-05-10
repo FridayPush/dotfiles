@@ -1,40 +1,22 @@
-
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
-export PATH=/usr/local/bin:$PATH
+# Go Path variables
+export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=$HOME/golang
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
-#   Change Prompt
-#   ------------------------------------------------------------
-    export PS1="| \w @ \h (\u) \n| => "
-    export PS2="| => "
-
-PROMPT_COMMAND="printf '\e%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _;printf '\e['"
-
-# For an AWS autoscaling group with desired-capicty 0, moves up 1 or down 1. Used for Rancher Agents
-alias agentup='aws autoscaling set-desired-capacity --desired-capacity $(( $(aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names RancherAgentsNanoGroup --query AutoScalingGroups[0].DesiredCapacity)+1)) --auto-scaling-group-name RancherAgentsGroup'
-alias agentdown='aws autoscaling set-desired-capacity --desired-capacity $(( $(aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names RancherAgentsNanoGroup --query AutoScalingGroups[0].DesiredCapacity)-1)) --auto-scaling-group-name RancherAgentsGroup'
-
-# Remove untagged images, remove stopped containers, remove orphaned volumes
-alias dockerRUI='docker rmi $(docker images | grep "^<none>" | awk "{print $3}")';
-alias dockerRC='docker rm -v $(docker ps -a -q -f status=exited)';
-alias dockerRDV='docker volume rm $(docker volume ls -q -f dangling=true)'
-alias dm='docker-machine';
-alias dme='docker-machine env';
-
-alias rebash='source ~/.bash_profile'
+# Make 'l' show columned output with dir/ names
 alias l='ls -CF'
 alias ll='ls -FGlAhp'
+# Mkdir with path and verbose by default
 alias mkdir='mkdir -pv'
+# Make cp and move require confirmation on overwrites by default
 alias cp='cp -iv'
 alias mv='mv -iv'
+# East aliases for directory movement
 alias godev='cd ~/Development'
-alias golearn='cd ~/relearn'
+
 mcd () { mkdir -p "$1" && cd "$1"; }  #Mkdir and cd into it
 
 alias cd..='cd ../'
@@ -47,7 +29,7 @@ alias edit='subl' # Opens in sublime
 alias f='open -a Finder ./'
 alias ~='cd ~'
 alias c='clear'
-alias myip='curl ip.appspot.com'
+alias myip='curl ifconfig.co'
 
 #   Color man pages
 #   ------------------------------------------------------
