@@ -43,25 +43,17 @@ else
 fi
 
 echo "Installing homebrew...";
-cd ~ && mkdir homebrew && curl -L https://github.com/Homebrew/homebrew/tarball/master | tar xz --strip 1 -C homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install \
-  bash-completion \
-  git \
-  go \
-  python \
-  python@2 \
-  readline \
-  watch \
+  bash-completion
 ;
 
 echo "Installing applications...";
 brew cask install \
-  disk-inventory-x \
-  dropbox \
   firefox \
-  flux \
   google-chrome \
   iterm2 \
+  docker \
   spectacle \
   the-unarchiver \
   transmission \
@@ -73,7 +65,7 @@ brew cask install \
 
 echo "Configuring git..."
 git config --global user.name "Jon Simpson"
-git config --global user.email simpson.jon@gmail.com
+git config --global user.email jon@jonsimpson.net
 git config --global push.default simple;
 git config --global core.editor vim
 
